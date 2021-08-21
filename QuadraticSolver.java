@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -50,6 +52,25 @@ public class QuadraticSolver extends Application {
         grid.add(solveButton, 1, 2, 3, 3);
         
         grid.setVgap(5);
+        
+        
+        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e)
+            {
+            	
+                double a = Double.parseDouble(aField.getText());
+                double b = Double.parseDouble(bField.getText());
+                double c = Double.parseDouble(cField.getText());
+                
+                double x1;
+                double x2;
+                
+                System.out.println(32);
+            	
+            }
+        };
+  
+        solveButton.setOnAction(event);
         
         grid.setAlignment(Pos.CENTER);
         Scene sc = new Scene(grid, 400, 200);
