@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -108,18 +110,13 @@ public class QuadraticSolver extends Application {
     	    String x2IfBad = "(-" + (int) b + " - sqrt(" + (int) (b*b - 4*a*c) + ")) / " + (int) 2*a;
     	}
     	*/
+    	Random rand = new Random((long) Math.floor(a*1+b*10+c*100));
+    	int error1 = rand.nextInt(10) - 5;
+    	int error2 = rand.nextInt(10) - 5;
     	
-    	if (Math.random() < 0.5) {
-    		if (Math.random() < 0.5) {
-    			x1 += Math.floor((Math.random() / 8) * 100);
-    		} else if (Math.random() > 0.5) {
-    			x1 -= Math.floor((Math.random() / 8) * 100);
-    		}
-    		if (Math.random() < 0.5) {
-    			x2 += Math.floor((Math.random() / 8) * 100);
-    		} else if (Math.random() > 0.5) {
-    			x2 -= Math.floor((Math.random() / 8) * 100);
-    		}
+    	if (rand.nextDouble() < 0.5) {
+    		x1 += error1;
+    		x2 += error2;
     	}
     	
     	return "x = " + x1 + ", x = " + x2;
