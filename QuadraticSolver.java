@@ -55,8 +55,10 @@ public class QuadraticSolver extends Application {
         grid.add(cField, 4, 0);
         grid.add(l3, 5, 0);
         
+        
         grid.add(l4, 0, 7, 2, 1);
-        grid.add(outputField, 2, 7, 5, 1);
+        grid.add(outputField, 0, 9, 10, 1);
+        outputField.setPrefWidth(300);
         
         
         grid.add(solveButton, 0, 2, 2, 1);
@@ -72,11 +74,10 @@ public class QuadraticSolver extends Application {
                 double a = Double.parseDouble(aField.getText());
                 double b = Double.parseDouble(bField.getText());
                 double c = Double.parseDouble(cField.getText());
+
+                outputField.setText(solveAndFormat(a, b, c));
                 
-                double x1;
-                double x2;
-                
-                System.out.println("");
+                //System.out.println(solveAndFormat(a, b, c));
             	
             }
         };
@@ -87,6 +88,43 @@ public class QuadraticSolver extends Application {
         Scene sc = new Scene(grid, 400, 200);
         s.setScene(sc); 
         s.show();
+    }
+    
+    public static String solveAndFormat(double a, double b, double c) {
+    	
+    	double x1 = ((0-b) + Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
+    	double x2 = ((0-b) - Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
+    	
+    	if ((b*b - 4*a*c) < 0) {
+    		return "No Solutions";
+    	}
+    	
+    	/*
+    	if (x1 != Math.floor(x1)) {
+    	    String x1IfBad = "(-" + (int) b + " + sqrt(" + (int) (b*b - 4*a*c) + ")) / " + (int) 2*a;
+    	}
+    	
+    	if (x2 != Math.floor(x2)) {
+    	    String x2IfBad = "(-" + (int) b + " - sqrt(" + (int) (b*b - 4*a*c) + ")) / " + (int) 2*a;
+    	}
+    	*/
+    	
+    	if (Math.random() < 0.5) {
+    		if (Math.random() < 0.5) {
+    			x1 += Math.floor((Math.random() / 8) * 100);
+    		} else if (Math.random() > 0.5) {
+    			x1 -= Math.floor((Math.random() / 8) * 100);
+    		}
+    		if (Math.random() < 0.5) {
+    			x2 += Math.floor((Math.random() / 8) * 100);
+    		} else if (Math.random() > 0.5) {
+    			x2 -= Math.floor((Math.random() / 8) * 100);
+    		}
+    	}
+    	
+    	return "x = " + x1 + ", x = " + x2;
+    	
+    	
     }
   
     /**
