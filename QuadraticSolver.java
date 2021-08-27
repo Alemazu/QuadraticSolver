@@ -110,6 +110,7 @@ public class QuadraticSolver extends Application {
     	    String x2IfBad = "(-" + (int) b + " - sqrt(" + (int) (b*b - 4*a*c) + ")) / " + (int) 2*a;
     	}
     	*/
+    	
     	Random rand = new Random((long) Math.floor(a*1+b*10+c*100));
     	int error1 = rand.nextInt(10) - 5;
     	int error2 = rand.nextInt(10) - 5;
